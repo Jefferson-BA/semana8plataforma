@@ -6,38 +6,62 @@ class RegistroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('REGISTRO DE PRODUCTOS')),
-      body: SingleChildScrollView( // Permite hacer scroll si el teclado tapa los campos
+      appBar: AppBar(title: const Text('NUEVO PRODUCTO')),
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(30.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const TextField(decoration: InputDecoration(labelText: 'Nombre del producto')),
-            const SizedBox(height: 15),
-            const TextField(decoration: InputDecoration(labelText: 'Precio')),
-            const SizedBox(height: 15),
-            const TextField(decoration: InputDecoration(labelText: 'Categoría')),
-            const SizedBox(height: 15),
-            const TextField(decoration: InputDecoration(labelText: 'Stock disponible')),
-            const SizedBox(height: 15),
-            const TextField(decoration: InputDecoration(labelText: 'Proveedor o Marca')),
-            const SizedBox(height: 40),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                padding: const EdgeInsets.symmetric(vertical: 15),
+            Text(
+              'Completa los detalles del producto',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            const SizedBox(height: 30),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Nombre del Producto',
+                prefixIcon: Icon(Icons.label_outline),
               ),
+            ),
+            const SizedBox(height: 20),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Precio (S/.)',
+                prefixIcon: Icon(Icons.attach_money),
+              ),
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(height: 20),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Categoría',
+                prefixIcon: Icon(Icons.category_outlined),
+              ),
+            ),
+            const SizedBox(height: 20),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Stock Disponible',
+                prefixIcon: Icon(Icons.inventory_2_outlined),
+              ),
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(height: 20),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Marca / Proveedor',
+                prefixIcon: Icon(Icons.business_outlined),
+              ),
+            ),
+            const SizedBox(height: 50),
+            ElevatedButton(
               onPressed: () {
-                // Solo UI, vuelve atrás al presionar guardar simulando el éxito
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Producto guardado (Simulación)')),
                 );
                 Navigator.pop(context);
               },
-              child: const Text(
-                'GUARDAR',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
+              child: const Text('GUARDAR PRODUCTO'),
             ),
           ],
         ),
